@@ -6,5 +6,6 @@ describe Course, type: :model do
   end
   context 'relationships' do
     it { should belong_to :teacher }
+    it { should have_many :enrollments }
   end
 end
