@@ -1,0 +1,13 @@
+<nav>
+  <% if current_user %>
+    <%= link_to 'Logout', logout_path %>
+  <% else %>
+    <%= link_to 'Login', login_path %>
+  <% end %>
+</nav>
+
+<section class='flash'>
+  <% flash.each do |name, msg| %>
+  <%= content_tag :div, sanitize(msg), class: name %>
+  <% end %>
+</section>
