@@ -40,6 +40,7 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'pry'
   gem 'active_designer'
+  gem 'factory_bot_rails'
 end
 
 group :development do
