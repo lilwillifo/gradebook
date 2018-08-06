@@ -3,7 +3,7 @@ class Student < ApplicationRecord
   has_many :enrollments
   has_many :courses, through: :enrollments
 
-  def gpa
-    enrollments.average(:grade)
+  def gpa(semester)
+    enrollments.where(course: courses.where(semester: semester) ).average(:grade)
   end
 end
