@@ -1,7 +1,9 @@
 <h1> Welcome <%= current_user.username %> </h1>
 
 <% if current_user.student? %>
-
+  <% @semesters.each do |semester| %>
+    <%= link_to "#{semester.session} #{semester.year}", "/dashboard?semester=#{semester.session}&#{semester.year}" %>
+  <% end %>
   <h2>Cumulative GPA: <%= current_user.student.gpa %>
   <h2>Your Courses:</h2>
   <% current_user.student.enrollments.each do |enrollment| %>

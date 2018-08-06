@@ -16,12 +16,18 @@ class UsersController < ApplicationController
   end
 
   def dashboard
+    @semesters = Semester.all
+  if params[:semester]
+    semester = Semester.where(session: params[:semester].split('&')[0], year: params[:semester].split('&')[1] )
+    @courses = Course.where(semester: semester)
+  else
     @courses = Course.all
+  end
   end
 
   private
 
   def user_params
-    params.permit(:id, :username, :password_digest)
+    params.permit(:id, :username, :password_digest, :semester)
   end
 end
