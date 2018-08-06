@@ -13,7 +13,8 @@ describe Course, type: :model do
   context 'instance methods' do
     it '.average_grade' do
       teacher = create(:teacher)
-      course = teacher.teacher.courses.create(title: 'Software Engineering')
+      semester = Semester.create(session: 'fall', year: 2018)
+      course = teacher.teacher.courses.create(title: 'Software Engineering', semester: semester)
       student = create(:student)
       student_2 = create(:student)
       Enrollment.create(student: student.student, course: course, grade: 4.0)
@@ -23,7 +24,8 @@ describe Course, type: :model do
     end
     it '.enrollment_count' do
       teacher = create(:teacher)
-      course = teacher.teacher.courses.create(title: 'Software Engineering')
+      semester = Semester.create(session: 'fall', year: 2018)
+      course = teacher.teacher.courses.create(title: 'Software Engineering', semester: semester)
       student = create(:student)
       student_2 = create(:student)
       Enrollment.create(student: student.student, course: course, grade: 4.0)

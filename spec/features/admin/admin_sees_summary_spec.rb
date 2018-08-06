@@ -10,7 +10,8 @@ describe "Student views their dashboard" do
     end
     teacher = create(:teacher)
     teacher = Teacher.find_by(user_id: teacher)
-    course = teacher.courses.create(title: 'Software Engineering')
+    semester = Semester.create(session: 'fall', year: 2018)
+    course = teacher.courses.create(title: 'Software Engineering', semester: semester)
     students.each do |student|
       Enrollment.create!(student: student, course: course, grade: rand(1..4))
     end
