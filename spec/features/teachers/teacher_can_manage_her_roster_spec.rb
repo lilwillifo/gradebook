@@ -15,7 +15,6 @@ describe "Teacher adds student to their course roster" do
     click_button "Add"
 
     expect(current_path).to eq("/courses/#{course.id}")
-    expect(page).to have_content("Margaret")
-    expect(page).to have_content("Added Margaret to #{course.title}!")
+    expect(page).to have_content("Added #{student.name} to #{course.title}")
   end
 end
