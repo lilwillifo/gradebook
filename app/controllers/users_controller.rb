@@ -17,4 +17,10 @@ class UsersController < ApplicationController
 
   def dashboard
   end
+
+  private
+
+  def user_params
+    params.permit(:id, :username, :password_digest)
+  end
 end
