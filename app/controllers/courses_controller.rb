@@ -1,4 +1,7 @@
 class CoursesController < ApplicationController
+  before_action :require_login
+  before_action :require_teacher
+
   def show
     @course = Course.find(params[:id])
   end

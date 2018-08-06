@@ -60,4 +60,21 @@ describe "Teacher manages their course roster" do
       expect(page).to_not have_content(student.username)
     end
   end
+
+  scenario 'a student cannot see other students grades' do
+    user = create(:student)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+    teacher = create(:teacher)
+    teacher = Teacher.find_by(user_id: teacher)
+    course = teacher.courses.create(title: 'Software Engineering')
+    enrolled_students = create_list(:student, 10)
+    not_enrolled = create_list(:student, 5)
+    enrolled_students.each do |user|
+      Enrollment.create!(student: user.student, course: course, grade: rand(0..4))
+    end
+
+    visit course_path(course)
+
+    expect(current_path).to eq(dashboard_path)
+  end
 end
