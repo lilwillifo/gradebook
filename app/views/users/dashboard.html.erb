@@ -1,1 +1,7 @@
 <h1> Welcome <%= current_user.username %> </h1>
+<% if current_user.student? %>
+  <h2>Your Courses:</h2>
+  <% current_user.student.enrollments.each do |enrollment| %>
+    <%= enrollment.course.title %>: <%= enrollment.grade %>
+  <% end %>
+<% end %>
