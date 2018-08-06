@@ -9,4 +9,8 @@ Rails.application.routes.draw do
 
   get '/dashboard', to: 'users#dashboard'
 
+  resources :courses do
+    resources :students
+  end
+
 end

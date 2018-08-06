@@ -1,0 +1,7 @@
+<%= form_tag course_students_path  do %>
+
+  <%= label_tag :name %>
+  <%= collection_select :student, :id, Student.all, :id, :name %>
+
+  <%= submit_tag 'Add' %>
+<% end %>
