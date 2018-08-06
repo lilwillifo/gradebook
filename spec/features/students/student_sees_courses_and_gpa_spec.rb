@@ -7,8 +7,9 @@ describe "Student views their dashboard" do
     student = Student.find_by(user_id: student)
     teacher = create(:teacher)
     teacher = Teacher.find_by(user_id: teacher)
-    course = teacher.courses.create(title: 'Software Engineering')
-    other_course = Course.create(title: 'Art History')
+    semester = Semester.create!(session: 'fall', year: 2018)
+    course = teacher.courses.create(title: 'Software Engineering', semester: semester)
+    other_course = Course.create(title: 'Art History', teacher: teacher, semester: semester)
     Enrollment.create!(student: student, course: course, grade: 3.7)
 
     visit dashboard_path
