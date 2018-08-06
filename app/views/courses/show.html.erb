@@ -2,8 +2,8 @@
 
 <h2>Enrolled Students</h2>
 <ul>
-  <% @course.students.each do |student| %>
-    <li class='student'><%= student.name %></li>
+  <% @course.enrollments.each do |enrollment| %>
+    <li class='student'><%= enrollment.student.name %>: <%= enrollment.grade %></li>
     <% end %>
 </ul>
 <h2>Remove from your roster:</h2>
