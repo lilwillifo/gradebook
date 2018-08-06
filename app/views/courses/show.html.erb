@@ -6,5 +6,6 @@
     <li class='student'><%= enrollment.student.name %>: <%= enrollment.grade %></li>
     <% end %>
 </ul>
+<h2>Add another student to your roster <%= link_to "here.", new_course_enrollment_path(@course) %></h2>
 <h2>Remove from your roster:</h2>
 <%= render partial: 'form' %>

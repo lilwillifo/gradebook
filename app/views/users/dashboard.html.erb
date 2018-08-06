@@ -6,4 +6,18 @@
   <% current_user.student.enrollments.each do |enrollment| %>
     <%= enrollment.course.title %>: <%= enrollment.grade %>
   <% end %>
+<% elsif current_user.teacher? %>
+  <h2>Your Courses:</h2>
+  <% current_user.teacher.courses.each do |course| %>
+    <%= link_to course.title, course_path(course) %>
+  <% end %>
+<% elsif current_user.admin? %>
+  <h2>Average Grades</h2>
+  <% @courses.each do |course| %>
+    <%= course.title %>: <%= course.average_grade %>
+  <% end %>
+  <h2>Total Enrolled</h2>
+  <% @courses.each do |course| %>
+    <%= course.title %>: <%= course.enrollment_count %>
+  <% end %>
 <% end %>

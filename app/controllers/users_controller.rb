@@ -16,6 +16,7 @@ class UsersController < ApplicationController
   end
 
   def dashboard
+    @courses = Course.all
   end
 
   private
