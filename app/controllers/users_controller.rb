@@ -20,6 +20,7 @@ class UsersController < ApplicationController
   if params[:semester]
     semester = Semester.where(session: params[:semester].split('&')[0], year: params[:semester].split('&')[1] )
     @courses = Course.where(semester: semester)
+    @enrollments = Enrollment.where(user: current_user, course: @courses)
   else
     @courses = Course.all
   end
