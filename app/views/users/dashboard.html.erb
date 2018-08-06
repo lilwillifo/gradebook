@@ -1,17 +1,22 @@
 <h1> Welcome <%= current_user.username %> </h1>
 
 <% if current_user.student? %>
+
   <h2>Cumulative GPA: <%= current_user.student.gpa %>
   <h2>Your Courses:</h2>
   <% current_user.student.enrollments.each do |enrollment| %>
     <%= enrollment.course.title %>: <%= enrollment.grade %>
   <% end %>
+
 <% elsif current_user.teacher? %>
+
   <h2>Your Courses:</h2>
   <% current_user.teacher.courses.each do |course| %>
-    <%= link_to course.title, course_path(course) %>
+    <%= link_to course.title, course_path(course) %> (<%= course.semester.session %> <%= course.semester.year %>)
   <% end %>
+
 <% elsif current_user.admin? %>
+
   <h2>Average Grades</h2>
   <% @courses.each do |course| %>
     <%= course.title %>: <%= course.average_grade %>
@@ -20,4 +25,5 @@
   <% @courses.each do |course| %>
     <%= course.title %>: <%= course.enrollment_count %>
   <% end %>
+
 <% end %>
