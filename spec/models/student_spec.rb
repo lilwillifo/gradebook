@@ -6,5 +6,6 @@ describe Student, type: :model do
   end
   context 'relationships' do
     it { should have_many :enrollments }
+    it { should have_many :courses }
   end
 end
