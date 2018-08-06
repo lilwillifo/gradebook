@@ -10,4 +10,5 @@ class EnrollmentsController < ApplicationController
     flash[:message] = "Added #{student.name} to #{course.title}"
     redirect_to course_path(params[:course_id])
   end
+
 end

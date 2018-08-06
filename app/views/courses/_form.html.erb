@@ -1,0 +1,7 @@
+<%= form_tag course_path(@course), method: :put  do %>
+
+  <%= label_tag :name %>
+  <%= collection_select :student, :id, @course.students, :id, :name %>
+
+  <%= submit_tag 'Remove' %>
+<% end %>
