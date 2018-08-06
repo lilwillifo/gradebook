@@ -1,3 +1,10 @@
 <h1><%= @course.title %></h1>
+
+<h2>Enrolled Students</h2>
+<ul>
+  <% @course.students.each do |student| %>
+    <li class='student'><%= student.name %></li>
+    <% end %>
+</ul>
 <h2>Remove from your roster:</h2>
 <%= render partial: 'form' %>
