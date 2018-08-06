@@ -13,5 +13,10 @@ teachers.each_with_index do |teacher, index|
 end
 
 15.times do
-  Enrollment.create!(course: Course.order("RANDOM()").first, student: Student.order("RANDOM()").first, grade: rand(1..4))
+  course = Course.order("RANDOM()").first
+  student = Student.order("RANDOM()").first
+  if Enrollment.find_by(course: course, student: student)
+  else
+    Enrollment.create!(course: course, student: student, grade: rand(1..4))
+  end
 end

@@ -52,7 +52,7 @@ describe "Teacher manages their course roster" do
     visit course_path(course)
 
     expect(page).to have_css('.student', count: 10)
-    enrolled_students.each do |student|
+    enrolled_students.sort.each do |student|
       expect(page).to have_content(student.username)
       expect(page).to have_content(student.student.enrollments.first.grade)
     end
