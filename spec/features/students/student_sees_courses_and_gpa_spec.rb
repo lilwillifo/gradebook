@@ -18,7 +18,7 @@ describe "Student views their dashboard" do
     visit dashboard_path
     expect(current_path).to eq("/dashboard")
 
-    click_on "spring 2018"
+    click_on "Spring 2018"
 
     expect(current_url).to include("/dashboard?session=spring&year=2018")
     expect(page).to_not have_content(course.title)

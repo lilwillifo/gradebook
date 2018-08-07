@@ -3,7 +3,7 @@
 <h2>Enrolled Students</h2>
 <ul>
   <% @course.students.sort.each do |student| %>
-    <li class='student'><%= student.name %>: <%= student.enrollments.find_by(course: @course).grade %></li>
+    <li class='student'><%= student.name %>: <%= student.enrollments.find_by(course: @course).grade %> (<%=link_to "Edit Grade", edit_course_enrollment_path(@course, student.enrollments.find_by(course: @course))  %>)</li>
     <% end %>
 </ul>
 <h2>Add another student to your roster <%= link_to "here.", new_course_enrollment_path(@course) %></h2>

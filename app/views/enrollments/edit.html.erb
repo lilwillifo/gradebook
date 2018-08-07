@@ -1,0 +1,9 @@
+<h1> <%= @course.title %> </h1>
+<h2> Edit Grade for <%= @student.name %></h2>
+<%= form_tag course_enrollment_path(@course, @enrollment), method: :put  do %>
+    
+  <%= label_tag :grade %>
+  <%= number_field_tag :grade, :class => 'text_field', :step => 0.01 %>
+
+  <%= submit_tag 'Edit' %>
+<% end %>

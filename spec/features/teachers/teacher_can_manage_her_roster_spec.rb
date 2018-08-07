@@ -81,4 +81,25 @@ describe "Teacher manages their course roster" do
 
     expect(current_path).to eq(dashboard_path)
   end
+
+  scenario 'teacher can edit grades' do
+    user = create(:teacher)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+    teacher = Teacher.find_by(user_id: user)
+    semester = Semester.create(session: 'fall', year: 2018)
+    course = teacher.courses.create(title: 'Software Engineering', semester: semester)
+    user_2 = create(:student)
+    student = Student.find_by(user_id: user_2)
+    enrollment = Enrollment.create!(student: student, course: course)
+
+    visit course_path(course)
+
+    click_on "Edit Grade"
+
+    expect(current_path).to eq "/courses/#{course.id}/enrollments/#{enrollment.id}/edit"
+    fill_in "grade", with: 3.0
+    click_on "Edit"
+    expect(current_path).to eq(course_path(course))
+    expect(page).to have_content(3.0)
+  end
 end

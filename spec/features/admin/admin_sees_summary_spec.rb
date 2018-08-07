@@ -18,6 +18,9 @@ describe "Student views their dashboard" do
     visit dashboard_path
 
     expect(current_path).to eq("/dashboard")
+
+    click_on "Fall 2018"
+
     expect(page).to have_content(course.average_grade)
     expect(page).to have_content(course.enrollment_count)
   end

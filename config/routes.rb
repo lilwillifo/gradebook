@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get '/dashboard', to: 'users#dashboard'
 
   resources :courses do
-    resources :enrollments, only: [:new, :create]
+    resources :enrollments, only: [:new, :create, :edit, :update]
   end
 
 end
