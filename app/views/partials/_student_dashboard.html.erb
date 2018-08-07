@@ -1,12 +1,15 @@
 <% @semesters.each do |semester| %>
-  <%= link_to "#{semester.session} #{semester.year}", "/dashboard?session=#{semester.session}&year=#{semester.year}" %>
+  <p><%= link_to "#{semester.session.capitalize} #{semester.year}", "/dashboard?session=#{semester.session}&year=#{semester.year}" %></p>
 <% end %>
-<% if @semester %>
 
-  <%= @semester.session %> <%= @semester.year %>
+<% if @semester %>
+  <h1><%= @semester.session.capitalize %> <%= @semester.year %></h1>
+
   <h2>Cumulative GPA: <%= current_user.student.gpa(@semester) %>
+
   <h2>Your Courses:</h2>
   <% @enrollments.each do |enrollment| %>
     <%= enrollment.course.title %>: <%= enrollment.grade %>
   <% end %>
+
 <% end %>
