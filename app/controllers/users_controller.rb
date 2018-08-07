@@ -17,10 +17,10 @@ class UsersController < ApplicationController
 
   def dashboard
     @semesters = Semester.all
-  if params[:semester]
-    semester = Semester.where(session: params[:semester].split('&')[0], year: params[:semester].split('&')[1] )
-    @courses = Course.where(semester: semester)
-    @enrollments = Enrollment.where(user: current_user, course: @courses)
+  if params[:session] && params[:year]
+    @semester = Semester.find_by(session: params[:session], year: params[:year] )
+    @courses = Course.where(semester: @semester)
+    @enrollments = Enrollment.where(student: current_user.student, course: @courses)
   else
     @courses = Course.all
   end
@@ -29,6 +29,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.permit(:id, :username, :password_digest, :semester)
+    params.permit(:id, :username, :password_digest, :session, :year)
   end
 end

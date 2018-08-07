@@ -13,15 +13,16 @@ describe "Student views their dashboard" do
     course = teacher.courses.create(title: 'Software Engineering', semester: semester_1)
     other_course = Course.create(title: 'Art History', teacher: teacher, semester: semester_2)
     Enrollment.create!(student: student, course: course, grade: 3.7)
+    Enrollment.create!(student: student, course: other_course, grade: 3.9)
 
     visit dashboard_path
     expect(current_path).to eq("/dashboard")
 
     click_on "spring 2018"
 
-    expect(current_url).to include("/dashboard?semester=spring&2018")
-    expect(page).to have_content(course.title)
-    expect(page).to_not have_content(other_course.title)
-    expect(page).to have_content(student.gpa(semester))
+    expect(current_url).to include("/dashboard?session=spring&year=2018")
+    expect(page).to_not have_content(course.title)
+    expect(page).to have_content(other_course.title)
+    expect(page).to have_content(student.gpa(semester_2))
   end
 end
