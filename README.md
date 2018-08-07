@@ -25,7 +25,7 @@ Gradebook creates a simple grading system for a school. It allows for the record
   `$ rake db:migrate`
   `$ rake db:seed`
 
-5. Start up your rails server with `rails s` and open localhost:3000 in your browser.
+5. Start up your rails server with `rails s` and open localhost:3000 in your browser. Check out seeds.rb to find logins. Try teacher1 (password: test), student1 (password: test), and Admin (password: test) to get a sense of roles. 
 
 6. Run test suite (unit and feature tests)
 
@@ -91,3 +91,8 @@ TL;DR:
 * **Margaret Williford**
 
 ## Future Iterations
+Currently, anyone can create an account and they are automatically registered as a student. This is to not allow individuals to sign up as an admin or teacher without permission. Currently, I'd have to change role manually on the backend. Ideally an admin would have these permissions to make changes. 
+
+This is also an exercise in database design, TDD, and Object Oriented Design. The intention was not to focus on views and layouts so it is currently extremely bare bones. 
+
+I'd like to add assigments to courses, so each courses grade was the average of all assignment grades. 
