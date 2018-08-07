@@ -1,7 +1,7 @@
 <%= form_tag course_enrollments_path  do %>
 
   <%= label_tag :name %>
-  <%= collection_select :student, :id, Student.all, :id, :name %>
+  <%= collection_select :student, :id, @students, :id, :name %>
 
   <%= submit_tag 'Add' %>
 <% end %>
