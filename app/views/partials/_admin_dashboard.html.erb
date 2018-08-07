@@ -1,0 +1,8 @@
+<h2>Average Grades</h2>
+<% @courses.each do |course| %>
+  <%= course.title %>: <%= course.average_grade %>
+<% end %>
+<h2>Total Enrolled</h2>
+<% @courses.each do |course| %>
+  <%= course.title %>: <%= course.enrollment_count %>
+<% end %>

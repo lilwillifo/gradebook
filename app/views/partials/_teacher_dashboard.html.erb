@@ -1,0 +1,4 @@
+<h2>Your Courses:</h2>
+<% current_user.teacher.courses.each do |course| %>
+  <%= link_to course.title, course_path(course) %> (<%= course.semester.session %> <%= course.semester.year %>)
+<% end %>
