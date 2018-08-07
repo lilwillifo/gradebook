@@ -16,11 +16,11 @@ teachers.each_with_index do |teacher, index|
   teacher.teacher.courses.create!(title: "Course#{index}", semester: Semester.order("RANDOM()").first)
 end
 
-15.times do
+20.times do
   course = Course.order("RANDOM()").first
   student = Student.order("RANDOM()").first
-  if Enrollment.find_by(course: course, student: student)
-  else
-    Enrollment.create!(course: course, student: student, grade: rand(1..4))
+  begin
+    Enrollment.create(course: course, student: student, grade: rand(1..4))
+  rescue
   end
 end
